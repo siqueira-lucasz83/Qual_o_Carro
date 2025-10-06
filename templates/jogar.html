@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qual é o Carro?</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-buttons">
+        <a href="javascript:history.back()" class="icon-button">
+          <img src="/static/icons/seta.png" alt="Voltar">
+        </a>
+        <a href="/menu" class="icon-button">
+          <img src="/static/icons/home.png" alt="Menu">
+        </a>
+      </div>
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="game-container">
+    <h1 class="header-title">Qual é o Carro?</h1>
+    <p id="tentativas-info" class="tentativas-info"></p>
+
+    <div id="dicas-container" class="dicas-container">
+      <h2 class="dicas-title">Dicas</h2>
+    </div>
+
+    <form id="palpite-form">
+      <input type="text" name="palpite" id="palpite-input" placeholder="Digite seu palpite" class="pixel-input">
+      <button type="submit" class="pixel-button">Enviar Palpite</button>
+    </form>
+
+    <div id="resposta-container" class="resposta-container"></div>
+
+    <div class="btn-group">
+      <button id="nova-partida-btn" class="pixel-button">Nova Partida</button>
+      <a href="{{ url_for('menu_principal') }}" id="voltar-menu" class="pixel-button">Voltar ao Menu</a>
+    </div>
+  </div>
+
+  <script>
+    const palpiteForm = document.getElementById('palpite-form');
+    const respostaContainer = document.getElementById('resposta-container');
+    const novaPartidaBtn = document.getElementById('nova-partida-btn');
+    const dicasContainer = document.getElementById('dicas-container');
+    const tentativasInfo = document.getElementById('tentativas-info');
+
+    const dicas = [];
+    const MAX_TENTATIVAS = 4;
+    let tentativasRestantes = MAX_TENTATIVAS;
+    let dicaAtualIndex = 0;
+
+    function updateTentativasInfo() {
+      tentativasInfo.textContent = `Tentativas restantes: ${tentativasRestantes}`;
+    }
+
+    async function fetchDicas() {
+      const response = await fetch('/carro-dica');
+      const data = await response.json();
+      dicas.push(`Marca: ${data.marca}`);
+      dicas.push(`Ano: ${data.ano}`);
+      dicas.push(`Potência: ${data.potencia} HP`);
+      dicas.push(`Carroceria: ${data.carroceria}`);
+    }
+
+    function mostrarProximaDica() {
+      if (dicaAtualIndex < dicas.length) {
+        const p = document.createElement('p');
+        p.textContent = dicas[dicaAtualIndex];
+        dicasContainer.appendChild(p);
+        dicaAtualIndex++;
+      }
+    }
+
+    window.onload = async () => {
+      await fetchDicas();
+      updateTentativasInfo();
+      mostrarProximaDica();
+    };
+
+    palpiteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const palpiteInput = document.getElementById('palpite-input');
+      const palpite = palpiteInput.value;
+
+      const response = await fetch('/palpite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `palpite=${encodeURIComponent(palpite)}`
+      });
+
+      const data = await response.json();
+
+      if (data.acertou) {
+        respostaContainer.textContent = `Você acertou! O carro era ${data.carro}! Você ganhou ${data.pontos} pontos!`;
+        respostaContainer.classList.add('text-green');
+        respostaContainer.classList.remove('text-red');
+        palpiteInput.disabled = true;
+        palpiteForm.querySelector('button').disabled = true;
+        tentativasInfo.textContent = "Parabéns, você acertou!";
+      } else {
+        tentativasRestantes--;
+        updateTentativasInfo();
+
+        if (tentativasRestantes > 0) {
+          respostaContainer.textContent = `Você errou. Tente novamente!`;
+          respostaContainer.classList.add('text-red');
+          respostaContainer.classList.remove('text-green');
+          mostrarProximaDica();
+        } else {
+          respostaContainer.innerHTML = `Suas tentativas acabaram. O carro era ${data.carro}.<br>Clique em 'Nova Partida' para jogar de novo.`;
+          respostaContainer.classList.add('text-red');
+          respostaContainer.classList.remove('text-green');
+          palpiteInput.disabled = true;
+          palpiteForm.querySelector('button').disabled = true;
+          tentativasInfo.textContent = "Jogo encerrado.";
+        }
+      }
+    });
+
+    novaPartidaBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  </script>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

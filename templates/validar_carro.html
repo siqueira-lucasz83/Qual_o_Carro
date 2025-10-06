@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de Carros</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-buttons">
+        <a href="javascript:history.back()" class="icon-button">
+          <img src="/static/icons/seta.png" alt="Voltar">
+        </a>
+        <a href="/menu" class="icon-button">
+          <img src="/static/icons/home.png" alt="Menu">
+        </a>
+      </div>
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container compact-top">
+    <header>
+      <h1 class="titulo-validacao">Validador de Carros com IA</h1>
+      <p class="subtitulo-validacao">Preencha os dados do veículo para adicioná-lo à base de dados do jogo.</p>
+    </header>
+
+    <main>
+      <section>
+        <form id="carForm">
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" name="modelo" class="pixel-input" required>
+
+          <label for="marca">Marca:</label>
+          <input type="text" id="marca" name="marca" class="pixel-input" required>
+
+          <label for="ano">Ano:</label>
+          <input type="text" id="ano" name="ano" class="pixel-input" required>
+
+          <label for="potencia">Potência (CV):</label>
+          <input type="text" id="potencia" name="potencia" class="pixel-input" required>
+
+          <label for="carroceria">Carroceria:</label>
+          <input type="text" id="carroceria" name="carroceria" class="pixel-input" required>
+
+          <button type="submit" class="pixel-button">Validar Carro</button>
+        </form>
+      </section>
+
+      <section id="results" class="results-section">
+        <div class="resposta-container" id="resposta-box"></div>
+      </section>
+
+      <div class="menu-options">
+        <a href="{{ url_for('menu_principal') }}" class="pixel-button">Voltar ao Menu</a>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='validar_carros.js') }}"></script>
+</body>
+</html>

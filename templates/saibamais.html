@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saiba Mais</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="menu-buttons">
+        <a href="javascript:history.back()" class="icon-button">
+          <img src="/static/icons/seta.png" alt="Voltar">
+        </a>
+      </div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="saiba-container">
+    <header>
+      <h1>Informações do Projeto</h1>
+      <p>Conheça em profundidade o funcionamento, estrutura e propósito do <strong>Qual é o Carro?</strong></p>
+    </header>
+
+    <section>
+      <h2>Visão Geral</h2>
+      <p><strong>Qual é o Carro?</strong> é um jogo web interativo onde o jogador tenta adivinhar o modelo de um carro com base em dicas progressivas. A cada tentativa errada, uma nova dica é revelada — como marca, ano, potência e carroceria — até que o jogador acerte ou esgote suas chances. O sistema pontua o jogador e registra seu desempenho em um ranking global.</p>
+    </section>
+
+    <section>
+      <h2>Funcionalidades</h2>
+      <ul>
+        <li><strong>Jogo de adivinhação:</strong> com dicas automáticas e sistema de pontuação baseado em acerto e número de tentativas.</li>
+        <li><strong>Cadastro e login de jogadores:</strong> com validação de campos e autenticação segura.</li>
+        <li><strong>Ranking:</strong> exibe os melhores jogadores com rolagem arcade e destaque para os top 5.</li>
+        <li><strong>Validação de carros:</strong> IA que analisa dados técnicos e sugere correções para inconsistências.</li>
+        <li><strong>Interface retrô pixelada:</strong> inspirada em fliperamas dos anos 80, com fonte arcade e botões estilizados.</li>
+        <li><strong>Modo administrador:</strong> permite cadastrar, editar e validar carros diretamente no sistema.</li>
+        <li><strong>Feedback visual:</strong> mensagens de acerto e erro com cores vibrantes e animações leves.</li>
+        <li><strong>Sistema de dicas dinâmicas:</strong> cada dica é revelada progressivamente com base nas tentativas restantes.</li>
+        <li><strong>Controle de sessão:</strong> o sistema mantém o jogador logado e rastreia sua pontuação atual.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tecnologias Utilizadas</h2>
+      <ul>
+        <li><strong>Python + Flask:</strong> estrutura principal do backend, gerenciamento de rotas, sessões e lógica do jogo.</li>
+        <li><strong>HTML + CSS (retrô pixelado):</strong> estrutura visual com estilo inspirado em jogos arcade.</li>
+        <li><strong>JavaScript:</strong> controle de tentativas, exibição de dicas, manipulação de DOM e requisições assíncronas.</li>
+        <li><strong>MySQL:</strong> banco de dados relacional para armazenar jogadores, pontuações e informações dos carros.</li>
+        <li><strong>Jinja2:</strong> motor de templates para renderizar páginas dinâmicas com dados do backend.</li>
+        <li><strong>Validador de dados com IA:</strong> sistema inteligente que verifica se os dados dos carros cadastrados são válidos e sugere correções.</li>
+        <li><strong>Fontes e ícones:</strong> uso da fonte “Press Start 2P” e emojis para reforçar o estilo retrô.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Arquitetura do Sistema</h2>
+      <p>O projeto segue uma arquitetura MVC simplificada:</p>
+      <ul>
+        <li><strong>Model:</strong> Representa os dados dos jogadores e carros, conectados ao MySQL.</li>
+        <li><strong>View:</strong> Templates HTML com Jinja2 que exibem as páginas do jogo, ranking e administração.</li>
+        <li><strong>Controller:</strong> Rotas Flask que recebem requisições, processam lógica e retornam respostas.</li>
+      </ul>
+      <p>Além disso, o sistema usa JavaScript para interações em tempo real e AJAX para comunicação assíncrona com o backend.</p>
+    </section>
+
+    <section>
+      <h2>Segurança</h2>
+      <ul>
+        <li><strong>Validação de campos:</strong> todos os inputs são verificados no frontend e backend.</li>
+        <li><strong>Controle de sessão:</strong> o Flask gerencia sessões para manter o jogador logado com segurança.</li>
+        <li><strong>Proteção contra manipulação:</strong> pontuações e dados são validados no backend antes de serem salvos.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Objetivo do Projeto</h2>
+      <p>O projeto tem como objetivo unir entretenimento com aprendizado técnico. Ele explora conceitos de:</p>
+      <ul>
+        <li>Desenvolvimento web com Flask</li>
+        <li>Integração com banco de dados relacional</li>
+        <li>Design de interfaces retrô e responsivas</li>
+        <li>Validação inteligente com IA</li>
+        <li>Gamificação e ranking competitivo</li>
+      </ul>
+      <p>É uma vitrine para quem curte carros, tecnologia e nostalgia digital.</p>
+    </section>
+
+    <section>
+      <h2>Sobre o Desenvolvedor</h2>
+      <p>Este projeto foi idealizado e desenvolvido por <strong>Lucas Siqueira</strong>, apaixonado por programação, carros e experiências interativas. Cada linha de código foi pensada para proporcionar uma jornada divertida, educativa e com estilo único. O projeto reflete dedicação, criatividade e domínio técnico em várias áreas do desenvolvimento web.</p>
+    </section>
+
+    <div class="menu-options">
+      <a href="{{ url_for('inicio') }}" class="pixel-button">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

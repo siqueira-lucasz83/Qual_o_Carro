@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="menu-buttons">
+        <a href="javascript:history.back()" class="icon-button">
+          <img src="/static/icons/seta.png" alt="Voltar">
+        </a>
+      </div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>Cadastro</h1>
+    </header>
+
+    <main>
+      <section>
+        {% if error %}
+          <p class="text-red">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+          <p class="text-green">{{ success }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('cadastro_page') }}">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" class="pixel-input" required>
+
+          <label for="sobrenome">Sobrenome:</label>
+          <input type="text" id="sobrenome" name="sobrenome" class="pixel-input" required>
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" class="pixel-input" required>
+
+          <label for="usuario">Nome de Usuário:</label>
+          <input type="text" id="usuario" name="usuario" class="pixel-input" required>
+
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" class="pixel-input" required>
+
+          <button type="submit" class="pixel-button">Cadastrar</button>
+        </form>
+
+        <p class="link-text">
+          Já tem uma conta?
+          <a href="{{ url_for('login_page') }}">Faça login.</a>
+        </p>
+      </section>
+    </main>
+
+    <div class="menu-options">
+      <a href="{{ url_for('inicio') }}" class="pixel-button">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

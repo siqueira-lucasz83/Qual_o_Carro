@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qual é o carro?</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container inicio-container">
+    <header>
+      <h1>Bem-vindo ao</h1>
+      <h2>"Qual é o Carro?"</h2>
+      <p>Um jogo divertido para testar seus conhecimentos sobre carros!</p>
+    </header>
+
+    <div class="menu-options">
+      <a href="{{ url_for('login_page') }}" class="pixel-button">Fazer Login</a>
+      <a href="{{ url_for('cadastro_page') }}" class="pixel-button">Cadastrar-se</a>
+      <a href="{{ url_for('saibamais') }}" class="pixel-button">Saiba Mais</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

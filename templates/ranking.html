@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking</title>
+  <link rel="icon" href="https://twemoji.maxcdn.com/v/13.1.0/svg/1f697.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="top-menu">
+    <div class="menu-content">
+      <div class="menu-buttons">
+        <a href="javascript:history.back()" class="icon-button">
+          <img src="/static/icons/seta.png" alt="Voltar">
+        </a>
+        <a href="/menu" class="icon-button">
+          <img src="/static/icons/home.png" alt="Menu">
+        </a>
+      </div>
+      <div class="menu-title">Qual é o Carro?</div>
+      <div class="help-button">
+        <a href="/tutorial" class="icon-button help-icon">
+          <img src="/static/icons/tutorial.png" alt="Ajuda">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>🏆 Ranking de Jogadores </h1>
+    </header>
+
+    <main>
+      <div class="ranking-table-wrapper">
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Usuário</th>
+              <th>Pontos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for jogador in ranking %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ jogador.usuario }}</td>
+              <td>{{ jogador.pontuacao }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <a href="{{ url_for('menu_principal') }}" class="pixel-button">Voltar ao Menu</a>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 <strong>Qual é o Carro?</strong> – Todos os direitos reservados.</p>
+        <p>Feito por <span class="lucas">Lucas Siqueira</span> com dedicação.</p>
+      </div>
+      <a href="https://github.com/siqueira-lucasz83" target="_blank" rel="noopener" class="github-icon">
+        <img src="/static/icons/githublink.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
