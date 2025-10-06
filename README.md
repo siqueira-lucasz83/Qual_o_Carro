@@ -1,6 +1,6 @@
 # Qual é o Carro?
 
-**Qual é o Carro?** é um jogo web interativo com visual retrô, onde o jogador tenta adivinhar o modelo de um carro com base em uma imagem pixelada e dicas progressivas. Além da jogabilidade, o sistema permite que o próprio jogador contribua com novos veículos, criando uma experiência dinâmica e colaborativa.
+**Qual é o Carro?** é um jogo web interativo com visual retrô, onde o jogador tenta adivinhar o modelo de um carro com base em dicas progressivas. Além da jogabilidade, o sistema permite que o próprio jogador contribua com novos veículos, criando uma experiência dinâmica e colaborativa.
 
 ## Funcionalidades
 
@@ -9,7 +9,6 @@
 - Ranking global com destaque para os melhores jogadores  
 - Cadastro e login com autenticação segura  
 - Interface retrô pixelada inspirada em fliperamas dos anos 80  
-- Modo administrador para gestão de veículos  
 - Validação inteligente de carros com IA (modelo **Mistral**)  
 - Possibilidade de **adicionar carros** ao jogo, aumentando a variedade e a interatividade  
 
@@ -51,4 +50,5 @@ Este é um projeto pessoal, aberto para fins educacionais e demonstração de ha
 ---
 
 **Desenvolvido com dedicação por Lucas Siqueira.**
+
 
